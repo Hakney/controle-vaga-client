@@ -1,4 +1,28 @@
-<p>apartamento works!</p>
-<div class="card flex justify-content-center">
-    <p-button label="Check" icon="pi pi-check"></p-button>
-</div>
+<form #apartamentoForm="ngForm" (ngSubmit)="onSubmit(apartamentoForm)">
+    <p-floatLabel>
+        <p-inputNumber id="bloco" name="bloco" [useGrouping]="false" [(ngModel)]="bloco" required />
+        <label for="bloco">Bloco</label>
+    </p-floatLabel>
+
+    <p-floatLabel>
+        <p-inputNumber id="apartamento" name="apartamento" [useGrouping]="false" [(ngModel)]="apartamento" required />
+        <label for="apartamento">Apartamento</label>
+    </p-floatLabel>
+
+    <p-floatLabel>
+        <input pInputText id="morador" name="morador" [(ngModel)]="morador" required />
+        <label for="morador">Morador</label>
+    </p-floatLabel>
+
+    <p-floatLabel>
+        <input pInputText id="telefone" name="telefone" [(ngModel)]="telefone" required />
+        <label for="telefone">Telefone</label>
+    </p-floatLabel>
+
+    <p-floatLabel>
+        <input pInputText id="email" name="email" [(ngModel)]="email" required email />
+        <label for="email">Email</label>
+    </p-floatLabel>
+
+    <p-button type="submit" [disabled]="apartamentoForm.invalid">Enviar</p-button>
+</form>

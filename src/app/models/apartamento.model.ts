@@ -1,7 +1,7 @@
 export interface Apartamento {
-    bloco: Number | undefined;
-    apartamento: Number | undefined;
-    morador: String | undefined;
-    telefone: String | undefined;
+    bloco: Number;
+    apartamento: Number;
+    morador: String;
+    telefone: String;
     email: String | undefined;
   }

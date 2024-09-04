@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ApartamentoComponent } from './apartamento/apartamento.component';
+import { ApartamentoComponent } from './components/apartamento/apartamento.component';
 
 @Component({
   selector: 'app-root',

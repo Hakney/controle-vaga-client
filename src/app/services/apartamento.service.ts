@@ -19,4 +19,7 @@ export class ApartamentoService {
     return this.http.post<Apartamento>(`${this.apiUrl}/apartamento`, apartamento);
   }
 
+  editApartamento(apartamento: Apartamento): Observable<Apartamento> {
+    return this.http.put<Apartamento>(`${this.apiUrl}/apartamento/:id`, apartamento.id);
+  }
 }

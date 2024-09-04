@@ -4,9 +4,8 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { Observable } from 'rxjs';
-import { Apartamento } from '../../models/apartamento.model'
-import { ApartamentoService } from '../../services/apartamento.service';
+import { Apartamento } from '../../../models/apartamento.model'
+import { ApartamentoService } from '../../../services/apartamento.service';
 
 @Component({
   selector: 'apartamento',
@@ -16,7 +15,7 @@ import { ApartamentoService } from '../../services/apartamento.service';
   styleUrl: './apartamento.component.css'
 })
 
-export class ApartamentoComponent implements OnInit {
+export class ApartamentoComponent {
   constructor(private apartamentoService: ApartamentoService) { }
   apartamentos!: Apartamento[];
 
@@ -25,10 +24,6 @@ export class ApartamentoComponent implements OnInit {
   morador: String | undefined;
   telefone: String | undefined;
   email: String | undefined;
-
-  ngOnInit(): void {
-    this.apartamentoService.getApartamentos().subscribe((apartamentos: Apartamento[]) => { this.apartamentos = apartamentos });
-  }
 
   onSubmit(form: any): void {
     console.log(form.value, 'teste');

@@ -1,4 +1,5 @@
 export interface Apartamento {
+    id: Number;
     bloco: Number;
     apartamento: Number;
     morador: String;

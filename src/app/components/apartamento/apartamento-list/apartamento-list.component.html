@@ -1,0 +1,83 @@
+<div class="card">
+    <p-table [value]="apartamentos" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:20%">Bloco</th>
+                <th style="width:20%">Apartamento</th>
+                <th style="width:20%">Morador</th>
+                <th style="width:20%">Telefone</th>
+                <th style="width:20%">Email</th>
+                <th style="width:20%"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-apartamento let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="apartamento">
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-inputNumber id="bloco" name="bloco" [useGrouping]="false" [(ngModel)]="apartamento.bloco" required />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{apartamento.bloco}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-inputNumber id="apartamento" name="apartamento" [useGrouping]="false" [(ngModel)]="apartamento.apartamento" required />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{apartamento.apartamento}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="apartamento.morador" required />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{apartamento.morador}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="apartamento.telefone" required />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{apartamento.telefone}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="apartamento.email" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{apartamento.email}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                            (click)="onRowEditInit(apartamento)" class="p-button-rounded p-button-text">
+                        </button>
+                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                            (click)="onRowEditSave(apartamento)"
+                            class="p-button-rounded p-button-text p-button-success mr-2">
+                        </button>
+                        <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                            (click)="onRowEditCancel(apartamento, ri)"
+                            class="p-button-rounded p-button-text p-button-danger">
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

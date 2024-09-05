@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-apartamento-list',
@@ -18,7 +19,7 @@ import { Router } from '@angular/router';
   imports: [TableModule, ToastModule, CommonModule, TagModule, DropdownModule, ButtonModule, InputTextModule, FormsModule, InputNumberModule],
   templateUrl: './apartamento-list.component.html',
   styleUrl: './apartamento-list.component.css',
-  providers: []
+  providers: [MessageService]
 })
 export class ApartamentoListComponent implements OnInit {
   apartamentos!: Apartamento[];
@@ -30,7 +31,11 @@ export class ApartamentoListComponent implements OnInit {
   telefone: String | undefined;
   email: String | undefined;
 
-  constructor(private apartamentoService: ApartamentoService, private router: Router) { }
+  constructor(
+    private apartamentoService: ApartamentoService, 
+    private router: Router, 
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
     this.apartamentoService.getApartamentos().subscribe((apartamentos: Apartamento[]) => { this.apartamentos = apartamentos });
@@ -43,6 +48,7 @@ export class ApartamentoListComponent implements OnInit {
     this.apartamentoService.editApartamento(apartamento).subscribe(
       () => {
         delete this.clonedApartamentos[apartamento.id as unknown as string];
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Apartamento atualizado com sucesso!' });
       }
     );
   }
@@ -51,7 +57,7 @@ export class ApartamentoListComponent implements OnInit {
     this.apartamentoService.deleteApartamento(apartamento.id).subscribe(
       () => {
         this.apartamentos = this.apartamentos.filter(a => a.id !== apartamento.id);
-        console.log("removido com sucesso!");
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Apartamento removido com sucesso!' });
 
       }
     );

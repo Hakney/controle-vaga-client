@@ -3,7 +3,6 @@ import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ApartamentoComponent } from '../apartamento/apartamento-form/apartamento.component';
 
 @Component({
   selector: 'app-menu',

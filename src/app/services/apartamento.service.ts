@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Apartamento } from '../models/apartamento.model';
 import { Observable } from 'rxjs';
 

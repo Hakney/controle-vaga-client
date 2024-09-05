@@ -1,28 +1,45 @@
-<form #apartamentoForm="ngForm" (ngSubmit)="onSubmit(apartamentoForm)">
-    <p-floatLabel>
-        <p-inputNumber id="bloco" name="bloco" [useGrouping]="false" [(ngModel)]="bloco" required />
-        <label for="bloco">Bloco</label>
-    </p-floatLabel>
+<form #apartamentoForm="ngForm" (ngSubmit)="onSubmit(apartamentoForm)" class="form-container">
+    <div class="form-row">
+        <div class="form-group">
+            <p-floatLabel>
+                <p-inputNumber id="bloco" name="bloco" [useGrouping]="false" [(ngModel)]="bloco" required />
+                <label for="bloco">Bloco</label>
+            </p-floatLabel>
+        </div>
+        <div class="form-group">
+            <p-floatLabel>
+                <p-inputNumber id="apartamento" name="apartamento" [useGrouping]="false" [(ngModel)]="apartamento"
+                    required />
+                <label for="apartamento">Apartamento</label>
+            </p-floatLabel>
+        </div>
+    </div>
 
-    <p-floatLabel>
-        <p-inputNumber id="apartamento" name="apartamento" [useGrouping]="false" [(ngModel)]="apartamento" required />
-        <label for="apartamento">Apartamento</label>
-    </p-floatLabel>
+    <div class="form-row">
+        <div class="form-group">
+            <p-floatLabel>
+                <input pInputText id="morador" name="morador" [(ngModel)]="morador" required />
+                <label for="morador">Morador</label>
+            </p-floatLabel>
+        </div>
+        <div class="form-group">
+            <p-floatLabel>
+                <input pInputText id="telefone" name="telefone" [(ngModel)]="telefone" required />
+                <label for="telefone">Telefone</label>
+            </p-floatLabel>
+        </div>
+    </div>
 
-    <p-floatLabel>
-        <input pInputText id="morador" name="morador" [(ngModel)]="morador" required />
-        <label for="morador">Morador</label>
-    </p-floatLabel>
+    <div class="form-row">
+        <div class="form-group">
+            <p-floatLabel>
+                <input pInputText id="email" name="email" [(ngModel)]="email" email />
+                <label for="email">Email</label>
+            </p-floatLabel>
+        </div>
+        <div class="form-group">
+            <p-button type="submit" [disabled]="apartamentoForm.invalid" class="submit-button">Enviar</p-button>
+        </div>
+    </div>
 
-    <p-floatLabel>
-        <input pInputText id="telefone" name="telefone" [(ngModel)]="telefone" required />
-        <label for="telefone">Telefone</label>
-    </p-floatLabel>
-
-    <p-floatLabel>
-        <input pInputText id="email" name="email" [(ngModel)]="email" email />
-        <label for="email">Email</label>
-    </p-floatLabel>
-
-    <p-button type="submit" [disabled]="apartamentoForm.invalid">Enviar</p-button>
 </form>

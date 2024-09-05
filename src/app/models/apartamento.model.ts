@@ -5,4 +5,5 @@ export interface Apartamento {
     morador: String;
     telefone: String;
     email: String | undefined;
+    label: string;
   }

@@ -1,6 +1,8 @@
+import { Apartamento } from "./apartamento.model";
+
 export interface Veiculo {
   id: Number;
-  id_apartamento: Number;
+  apartamento: Apartamento;
   marca: String;
   modelo: String;
   cor: String;

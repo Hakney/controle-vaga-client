@@ -3,7 +3,7 @@
     <p-table [value]="veiculos" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
         <ng-template pTemplate="header">
             <tr>
-                <th style="width:20%">Apartamento ID</th>
+                <th style="width:20%">Apartamento</th>
                 <th style="width:20%">Marca</th>
                 <th style="width:20%">Modelo</th>
                 <th style="width:20%">Cor</th>
@@ -16,11 +16,19 @@
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <p-inputNumber id="id_apartamento" name="id_apartamento" [useGrouping]="false" [(ngModel)]="veiculo.id_apartamento" required />
+                            <p-dropdown 
+                                [options]="apartamentos" 
+                                optionLabel="label" 
+                                optionValue="id" 
+                                [(ngModel)]="veiculo.apartamento.id" 
+                                name="apartamentoid" 
+                                [appendTo]="'body'"
+                                required>
+                            </p-dropdown>
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{veiculo.id_apartamento}}
-                        </ng-template>
+                            {{ getApartamentoLabel(veiculo.apartamento.id) }}
+                          </ng-template>
                     </p-cellEditor>
                 </td>
                 <td>
@@ -86,5 +94,7 @@
         </ng-template>
     </p-table>
     <br />
-    <p-button (click)="redirectToForm()">Novo veículo</p-button>
+    <div style="display: flex; justify-content: flex-end;">
+        <p-button (click)="redirectToForm()">Novo veículo</p-button>
+    </div>
 </div>

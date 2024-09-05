@@ -9,33 +9,45 @@ import { MessageService } from 'primeng/api';
 import { Veiculo } from '../../../models/veiculo.model';
 import { VeiculoService } from '../../../services/veiculo/veiculo.service';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { ApartamentoService } from '../../../services/apartamento/apartamento.service';
+import { Apartamento } from '../../../models/apartamento.model';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-veiculo',
   standalone: true,
-  imports: [ButtonModule, FloatLabelModule, InputTextModule, FormsModule, InputNumberModule, ToastModule],
+  imports: [ButtonModule, FloatLabelModule, InputTextModule, FormsModule, InputNumberModule, ToastModule, DropdownModule],
   templateUrl: './veiculo.component.html',
   styleUrls: ['./veiculo.component.css'],
   providers: [MessageService]
 })
 export class VeiculoComponent implements OnInit {
   veiculos!: Veiculo[];
+  apartamentos!: Apartamento[];
+
   clonedVeiculos: { [s: string]: Veiculo } = {};
 
-  id_apartamento: Number | undefined;
+  apartamentoId: Number | undefined;
   marca: String | undefined;
   modelo: String | undefined;
   cor: String | undefined;
   placa: String | undefined;
 
   constructor(
+    private apartamentoService: ApartamentoService,
     private veiculoService: VeiculoService,
     private router: Router,
     private messageService: MessageService
   ) { }
 
   ngOnInit() {
-    this.veiculoService.getVeiculos().subscribe((veiculos: Veiculo[]) => { this.veiculos = veiculos });
+    this.apartamentoService.getApartamentos().subscribe((apartamentos: Apartamento[]) => {
+      this.apartamentos = apartamentos.map(apartamento => ({
+        ...apartamento,
+        label: `Apartamento ${apartamento.apartamento} - Bloco ${apartamento.bloco}`
+      }));
+    });
+
   }
 
   onSubmit(form: any): void {
@@ -84,6 +96,5 @@ export class VeiculoComponent implements OnInit {
 
   onRowEditCancel(veiculo: Veiculo, index: number) {
     this.veiculos[index] = this.clonedVeiculos[veiculo.id as unknown as string];
-    delete this.clonedVeiculos[veiculo.id as unknown as string];
   }
 }

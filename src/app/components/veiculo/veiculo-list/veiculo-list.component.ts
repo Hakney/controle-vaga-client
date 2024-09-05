@@ -12,11 +12,13 @@ import { MessageService } from 'primeng/api';
 import { Veiculo } from '../../../models/veiculo.model';
 import { VeiculoService } from '../../../services/veiculo/veiculo.service';
 import { Router } from '@angular/router';
+import { ApartamentoService } from '../../../services/apartamento/apartamento.service';
+import { Apartamento } from '../../../models/apartamento.model';
 
 @Component({
   selector: 'app-veiculo-list',
   standalone: true,
-  imports: [ TableModule, ToastModule, CommonModule, TagModule, DropdownModule, ButtonModule, InputTextModule, FormsModule, InputNumberModule],
+  imports: [TableModule, ToastModule, CommonModule, TagModule, DropdownModule, ButtonModule, InputTextModule, FormsModule, InputNumberModule],
   templateUrl: './veiculo-list.component.html',
   styleUrl: './veiculo-list.component.css',
   providers: [MessageService]
@@ -24,21 +26,37 @@ import { Router } from '@angular/router';
 export class VeiculoListComponent {
   veiculos!: Veiculo[];
   clonedVeiculos: { [s: string]: Veiculo } = {};
+  apartamentos: Apartamento[] = [];
 
-  id_apartamento: Number | undefined;
+  apartamentoId: Number | undefined;
   marca: String | undefined;
   modelo: String | undefined;
   cor: String | undefined;
   placa: String | undefined;
 
   constructor(
-    private veiculoService: VeiculoService, 
-    private router: Router, 
+    private veiculoService: VeiculoService,
+    private apartamentoService: ApartamentoService,
+    private router: Router,
     private messageService: MessageService
   ) { }
 
   ngOnInit() {
-    this.veiculoService.getVeiculos().subscribe((veiculos: Veiculo[]) => { this.veiculos = veiculos });
+    this.veiculoService.getVeiculos().subscribe((veiculos: Veiculo[]) => { 
+      this.veiculos = veiculos 
+    });
+    this.apartamentoService.getApartamentos().subscribe((apartamentos: Apartamento[]) => {
+      this.apartamentos = apartamentos.map(apartamento => ({
+        ...apartamento,
+        label: `Apartamento ${apartamento?.apartamento} - Bloco ${apartamento?.bloco}`
+      }));
+    });
+
+  }
+
+  getApartamentoLabel(apartamentoId: Number): string {
+    const apartamento = this.apartamentos.find(a => a.id === apartamentoId);
+    return apartamento ? apartamento.label : 'N/A';
   }
 
   onRowEditInit(veiculo: Veiculo) {

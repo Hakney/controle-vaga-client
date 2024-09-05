@@ -26,14 +26,11 @@ export class ApartamentoComponent {
   email: String | undefined;
 
   onSubmit(form: any): void {
-    console.log(form.value, 'teste');
-    console.log(this.apartamentos, 'apartamentos');
-
     if (form.valid) {
       const apartamento: Apartamento = form.value;
       this.apartamentoService.saveApartamento(apartamento).subscribe(
         (response) => {
-          alert('Apartamento salvo com sucesso');
+          console.log('Apartamento salvo com sucesso');
         });
     }
   }

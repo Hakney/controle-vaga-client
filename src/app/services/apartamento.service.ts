@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApartamentoService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private apiUrl = 'http://localhost:3000';
 
@@ -20,6 +20,10 @@ export class ApartamentoService {
   }
 
   editApartamento(apartamento: Apartamento): Observable<Apartamento> {
-    return this.http.put<Apartamento>(`${this.apiUrl}/apartamento/:id`, apartamento.id);
+    return this.http.put<Apartamento>(`${this.apiUrl}/apartamento/${apartamento.id}`, apartamento);
+  }
+
+  deleteApartamento(id: Number): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/apartamento/${id}`);
   }
 }

@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-apartamento-list',
@@ -28,8 +29,8 @@ export class ApartamentoListComponent implements OnInit {
   morador: String | undefined;
   telefone: String | undefined;
   email: String | undefined;
-  
-  constructor(private apartamentoService: ApartamentoService) { }
+
+  constructor(private apartamentoService: ApartamentoService, private router: Router) { }
 
   ngOnInit() {
     this.apartamentoService.getApartamentos().subscribe((apartamentos: Apartamento[]) => { this.apartamentos = apartamentos });
@@ -39,7 +40,25 @@ export class ApartamentoListComponent implements OnInit {
   }
 
   onRowEditSave(apartamento: Apartamento) {
-      delete this.clonedApartamentos[apartamento.id as unknown as string];
+    this.apartamentoService.editApartamento(apartamento).subscribe(
+      () => {
+        delete this.clonedApartamentos[apartamento.id as unknown as string];
+      }
+    );
+  }
+
+  onRowDelete(apartamento: Apartamento) {
+    this.apartamentoService.deleteApartamento(apartamento.id).subscribe(
+      () => {
+        this.apartamentos = this.apartamentos.filter(a => a.id !== apartamento.id);
+        console.log("removido com sucesso!");
+
+      }
+    );
+  }
+
+  redirectToForm() {
+    this.router.navigate(['/apartamento-new']);
   }
 
   onRowEditCancel(apartamento: Apartamento, index: number) {

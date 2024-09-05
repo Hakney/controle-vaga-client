@@ -1,33 +1,23 @@
-/* Estilos para o contêiner do formulário */
 .form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Espaçamento entre os grupos de campos */
-    padding: 2rem;
-    max-width: 800px;
-    margin: auto;
-    background-color: #f9f9f9; /* Cor de fundo do formulário */
-    border-radius: 0.5rem; /* Bordas arredondadas */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra do formulário */
-  }
-  
-  /* Estilos para cada linha de campos */
-  .form-row {
-    display: flex;
-    gap: 1rem; /* Espaçamento entre os campos na linha */
-  }
-  
-  /* Estilos para cada grupo de campos do formulário */
-  .form-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  /* Estilos específicos para o botão de envio */
-  .submit-button {
-    align-self: flex-end; /* Alinha o botão à direita do contêiner */
-    margin-top: 1rem;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

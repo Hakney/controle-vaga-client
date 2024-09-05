@@ -1,0 +1,47 @@
+<form #veiculoForm="ngForm" (ngSubmit)="onSubmit(veiculoForm)" class="form-container">
+    <p-toast />
+    <div class="form-row">
+        <div class="form-group">
+            <p-floatLabel>
+                <p-inputNumber id="id_apartamento" name="id_apartamento" [useGrouping]="false" [(ngModel)]="id_apartamento" required />
+                <label for="id_apartamento">ID Apartamento</label>
+            </p-floatLabel>
+        </div>
+        <div class="form-group">
+            <p-floatLabel>
+                <input pInputText id="marca" name="marca" [(ngModel)]="marca" required />
+                <label for="marca">Marca</label>
+            </p-floatLabel>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <p-floatLabel>
+                <input pInputText id="modelo" name="modelo" [(ngModel)]="modelo" required />
+                <label for="modelo">Modelo</label>
+            </p-floatLabel>
+        </div>
+        <div class="form-group">
+            <p-floatLabel>
+                <input pInputText id="cor" name="cor" [(ngModel)]="cor" required />
+                <label for="cor">Cor</label>
+            </p-floatLabel>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <p-floatLabel>
+                <input pInputText id="placa" name="placa" [(ngModel)]="placa" required />
+                <label for="placa">Placa</label>
+            </p-floatLabel>
+        </div>
+        <div class="form-group">
+            <div class="form-row">
+                <p-button label="Enviar" type="submit" [disabled]="veiculoForm.invalid"></p-button>
+                <p-button label="Voltar" [text]="true" severity="secondary" (click)="redirectToList()"/>
+            </div>
+        </div>
+    </div>
+</form>

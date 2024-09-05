@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apartamento } from '../../../models/apartamento.model';
-import { ApartamentoService } from '../../../services/apartamento.service';
+import { ApartamentoService } from '../../../services/apartamento/apartamento.service';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { CommonModule } from '@angular/common';

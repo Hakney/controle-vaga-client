@@ -39,7 +39,10 @@
             </p-floatLabel>
         </div>
         <div class="form-group">
-            <p-button type="submit" [disabled]="apartamentoForm.invalid" class="submit-button">Enviar</p-button>
+            <div class="form-row">
+                <p-button label="Enviar" type="submit" [disabled]="apartamentoForm.invalid"></p-button>
+                <p-button label="Voltar" [text]="true" severity="secondary" (click)="redirectToList()"/>
+            </div>
         </div>
     </div>
 

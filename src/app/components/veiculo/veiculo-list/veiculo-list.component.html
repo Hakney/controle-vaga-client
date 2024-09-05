@@ -1,83 +1,83 @@
 <div class="card">
     <p-toast></p-toast>
-    <p-table [value]="apartamentos" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
+    <p-table [value]="veiculos" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
         <ng-template pTemplate="header">
             <tr>
-                <th style="width:20%">Bloco</th>
-                <th style="width:20%">Apartamento</th>
-                <th style="width:20%">Morador</th>
-                <th style="width:20%">Telefone</th>
-                <th style="width:20%">Email</th>
+                <th style="width:20%">Apartamento ID</th>
+                <th style="width:20%">Marca</th>
+                <th style="width:20%">Modelo</th>
+                <th style="width:20%">Cor</th>
+                <th style="width:20%">Placa</th>
                 <th style="width:20%; text-align: center;">Ações</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-apartamento let-editing="editing" let-ri="rowIndex">
-            <tr [pEditableRow]="apartamento">
+        <ng-template pTemplate="body" let-veiculo let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="veiculo">
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <p-inputNumber id="bloco" name="bloco" [useGrouping]="false" [(ngModel)]="apartamento.bloco" required />
+                            <p-inputNumber id="id_apartamento" name="id_apartamento" [useGrouping]="false" [(ngModel)]="veiculo.id_apartamento" required />
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{apartamento.bloco}}
+                            {{veiculo.id_apartamento}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <p-inputNumber id="apartamento" name="apartamento" [useGrouping]="false" [(ngModel)]="apartamento.apartamento" required />
+                            <input pInputText type="text" [(ngModel)]="veiculo.marca" required />
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{apartamento.apartamento}}
+                            {{veiculo.marca}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="apartamento.morador" required />
+                            <input pInputText type="text" [(ngModel)]="veiculo.modelo" required />
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{apartamento.morador}}
+                            {{veiculo.modelo}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="apartamento.telefone" required />
+                            <input pInputText type="text" [(ngModel)]="veiculo.cor" required />
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{apartamento.telefone}}
+                            {{veiculo.cor}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" email [(ngModel)]="apartamento.email" />
+                            <input pInputText type="text" [(ngModel)]="veiculo.placa" required />
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{apartamento.email}}
+                            {{veiculo.placa}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
                 <td>
                     <div style="display: flex; gap: 0.5rem; justify-content: center; align-items: center;">
                         <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
-                            (click)="onRowEditInit(apartamento)" class="p-button-rounded p-button-text">
+                            (click)="onRowEditInit(veiculo)" class="p-button-rounded p-button-text">
                         </button>
                         <button *ngIf="!editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-trash"
-                            (click)="onRowDelete(apartamento)"
+                            (click)="onRowDelete(veiculo)"
                             class="p-button-rounded p-button-text p-button-danger">
                         </button>
                         <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
-                            (click)="onRowEditSave(apartamento)"
+                            (click)="onRowEditSave(veiculo)"
                             class="p-button-rounded p-button-text p-button-success mr-2">
                         </button>
                         <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
-                            (click)="onRowEditCancel(apartamento, ri)"
+                            (click)="onRowEditCancel(veiculo, ri)"
                             class="p-button-rounded p-button-text p-button-danger">
                         </button>
                     </div>
@@ -86,5 +86,5 @@
         </ng-template>
     </p-table>
     <br />
-    <p-button (click)="redirectToForm()">Novo apartamento</p-button>
+    <p-button (click)="redirectToForm()">Novo veículo</p-button>
 </div>

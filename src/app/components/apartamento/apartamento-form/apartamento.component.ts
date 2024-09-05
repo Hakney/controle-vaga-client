@@ -5,7 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { Apartamento } from '../../../models/apartamento.model'
-import { ApartamentoService } from '../../../services/apartamento.service';
+import { ApartamentoService } from '../../../services/apartamento/apartamento.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { Router } from '@angular/router';
